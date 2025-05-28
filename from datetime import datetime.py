@@ -41,7 +41,9 @@ class Invoice:
         for item in self.items:
             price = item["price"]
             tax = item["tax"]
-            total += price + price * tax * discount
+            #total += price + price * tax * discount (original line-Bug)
+            total += (price * (1 - discount)) * (1 + tax) #Solution
+
         return total
 
 
